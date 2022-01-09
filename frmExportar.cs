@@ -58,7 +58,18 @@ namespace IntegracaoExcel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ExecutaExportacao();
+            StringBuilder stringBuilder = new StringBuilder();  
+            if (string.IsNullOrEmpty(txtDestinoArquivo.Text))
+                stringBuilder.AppendLine(" - Caminho de destino do arquivo não pode estar vazio!");
+
+            if (string.IsNullOrEmpty(txtNomeArquivo.Text))
+                stringBuilder.AppendLine(" - Deve ser informado um nome para o arquivo!");
+
+
+            if (string.IsNullOrEmpty(stringBuilder.ToString()))
+                MessageBox.Show(stringBuilder.ToString());
+            else
+                ExecutaExportacao();
         }
 
         private void btnPesquisarCaminho_Click(object sender, EventArgs e)
