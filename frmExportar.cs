@@ -13,7 +13,7 @@ namespace IntegracaoExcel
 {
     public partial class frmExportar : Form
     {
-        string sCaminhoDefault = "";
+        string sCaminhoDefault = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); 
         public frmExportar()
         {
             InitializeComponent();
@@ -59,7 +59,7 @@ namespace IntegracaoExcel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Permitido())
+            if (Permitido() && ConfirmaCaminho())
                 ExecutaExportacao();
             
         }
@@ -75,19 +75,27 @@ namespace IntegracaoExcel
 
         private bool Permitido()
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            if (string.IsNullOrEmpty(txtDestinoArquivo.Text))
-                stringBuilder.AppendLine(" - Caminho de destino do arquivo não pode estar vazio!");
-
             if (string.IsNullOrEmpty(txtNomeArquivo.Text))
-                stringBuilder.AppendLine(" - Deve ser informado um nome para o arquivo!");
+            {
+                MessageBox.Show(" - Caminho de destino do arquivo não pode estar vazio!");
+                return false;
+            }
+            return true;
+        }
 
-            if (string.IsNullOrEmpty(stringBuilder.ToString()))
-                MessageBox.Show(stringBuilder.ToString());
-
-            return string.IsNullOrEmpty(stringBuilder.ToString());
-
-
+        private bool ConfirmaCaminho()
+        {
+            bool bOK = false;
+            if (string.IsNullOrEmpty(txtDestinoArquivo.Text))
+                if (MessageBox.Show(" - Nenhum Caminho foi informado. Deseja utilizar o padrão?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    txtDestinoArquivo.Text = sCaminhoDefault;
+                    bOK = true;
+                }
+                else
+                    bOK = false;
+               
+            return bOK;
         }
     }
 }
