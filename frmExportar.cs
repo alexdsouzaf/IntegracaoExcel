@@ -13,6 +13,7 @@ namespace IntegracaoExcel
 {
     public partial class frmExportar : Form
     {
+        string sCaminhoDefault = "";
         public frmExportar()
         {
             InitializeComponent();
@@ -58,18 +59,9 @@ namespace IntegracaoExcel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StringBuilder stringBuilder = new StringBuilder();  
-            if (string.IsNullOrEmpty(txtDestinoArquivo.Text))
-                stringBuilder.AppendLine(" - Caminho de destino do arquivo não pode estar vazio!");
-
-            if (string.IsNullOrEmpty(txtNomeArquivo.Text))
-                stringBuilder.AppendLine(" - Deve ser informado um nome para o arquivo!");
-
-
-            if (string.IsNullOrEmpty(stringBuilder.ToString()))
-                MessageBox.Show(stringBuilder.ToString());
-            else
+            if (Permitido())
                 ExecutaExportacao();
+            
         }
 
         private void btnPesquisarCaminho_Click(object sender, EventArgs e)
@@ -77,9 +69,25 @@ namespace IntegracaoExcel
             FolderBrowserDialog fbd = new FolderBrowserDialog();    
             
             if (fbd.ShowDialog() == DialogResult.OK)
-            {
                 txtDestinoArquivo.Text = fbd.SelectedPath;
-            }
+            
+        }
+
+        private bool Permitido()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (string.IsNullOrEmpty(txtDestinoArquivo.Text))
+                stringBuilder.AppendLine(" - Caminho de destino do arquivo não pode estar vazio!");
+
+            if (string.IsNullOrEmpty(txtNomeArquivo.Text))
+                stringBuilder.AppendLine(" - Deve ser informado um nome para o arquivo!");
+
+            if (string.IsNullOrEmpty(stringBuilder.ToString()))
+                MessageBox.Show(stringBuilder.ToString());
+
+            return string.IsNullOrEmpty(stringBuilder.ToString());
+
+
         }
     }
 }
