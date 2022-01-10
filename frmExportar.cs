@@ -97,5 +97,35 @@ namespace IntegracaoExcel
                
             return bOK;
         }
+
+        private void testeDataTable()
+        {
+            DataTable dtb = new DataTable();
+            dtb.TableName = "Planilha";
+            dtb.Columns.Add("ID");
+            dtb.Columns.Add("DESCRICAO");
+            DataRow row = dtb.NewRow();
+            row["ID"] = "1";
+            row["DESCRICAO"] = "Hello2";
+            dtb.Rows.Add(row); 
+
+
+            DataTable clonada = new DataTable();
+            clonada = dtb.Clone();
+
+            DataSet dts = new DataSet();
+            dts.Tables.Add(clonada);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            testeDataTable();
+        }
+
+
+        private void testeDataSet()
+        {
+       
+        }
     }
 }
