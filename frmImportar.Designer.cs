@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grdImportados = new System.Windows.Forms.DataGridView();
             this.btnPesquisarCaminho = new System.Windows.Forms.Button();
             this.lblCaminho = new System.Windows.Forms.Label();
             this.txtDestinoArquivo = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdImportados)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grdImportados
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 112);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(306, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.grdImportados.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.grdImportados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdImportados.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grdImportados.Location = new System.Drawing.Point(0, 112);
+            this.grdImportados.Name = "grdImportados";
+            this.grdImportados.Size = new System.Drawing.Size(306, 150);
+            this.grdImportados.TabIndex = 0;
             // 
             // btnPesquisarCaminho
             // 
@@ -91,10 +91,11 @@
             this.Controls.Add(this.btnPesquisarCaminho);
             this.Controls.Add(this.lblCaminho);
             this.Controls.Add(this.txtDestinoArquivo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.grdImportados);
             this.Name = "frmImportar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmImportar";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdImportados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,7 +103,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grdImportados;
         private System.Windows.Forms.Button btnPesquisarCaminho;
         private System.Windows.Forms.Label lblCaminho;
         private System.Windows.Forms.TextBox txtDestinoArquivo;
